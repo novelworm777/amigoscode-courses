@@ -1,6 +1,6 @@
 package com.example.demo.student;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,14 +11,10 @@ import java.util.Optional;
 // Service layer mainly for business logic
 
 @Service
+@AllArgsConstructor
 public class StudentService {
 
     private final StudentRepository studentRepository;
-
-    @Autowired
-    public StudentService(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
 
     public List<Student> getStudents() {
         return studentRepository.findAll();
@@ -55,7 +51,7 @@ public class StudentService {
         studentRepository.deleteById(studentId);
     }
 
-    @Transactional
+    @Transactional // if one of queries failed, rollback
     public void updateStudent(Long studentId, String name, String email) {
         Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new IllegalStateException(

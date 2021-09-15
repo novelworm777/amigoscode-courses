@@ -1,23 +1,19 @@
 package com.example.demo.student;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// API layer
+// API layer or presentation layer
 
 @RestController
 // route --> http://localhost:8080/api/v1/student
 @RequestMapping(path = "api/v1/student")
+@AllArgsConstructor
 public class StudentController {
 
     private final StudentService studentService;
-
-    @Autowired
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
-    }
 
     @GetMapping // GET
     public List<Student> getStudents() {

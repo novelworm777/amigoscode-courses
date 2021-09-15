@@ -17,18 +17,22 @@ public class StudentConfig {
             StudentRepository repository
     ) {
         return args -> {
-            // create data
+            // seeding
             // ctrl + alt + v --> introduce variable
             Student mariam = new Student(
+                    null,
                     "Mariam",
                     "mariam.jama@gmail.com",
-                    LocalDate.of(2000, JANUARY, 5)
+                    LocalDate.of(2000, JANUARY, 5),
+                    null
             );
 
             Student alex = new Student(
+                    null,
                     "Alex",
                     "alex@gmail.com",
-                    LocalDate.of(2004, JANUARY, 5)
+                    LocalDate.of(2004, JANUARY, 5),
+                    null
             );
 
             // save to database
